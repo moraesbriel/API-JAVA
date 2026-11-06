@@ -10,17 +10,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name="usuario")
+@Entity // criando uma tabela
+@Table(name="usuario") // nomeando a tabela
 public class Usuario {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id // criando a chave primária
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // preenchendo os próximos valores acrescidos com números inteiros depois de 1
 	private long id;
 	private String nome, usuario, foto, tipo, senha;
 	
-	@OneToMany(mappedBy="usuario", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties("usuario")
+	@OneToMany(mappedBy="usuario", cascade=CascadeType.REMOVE) // indicando cardinalidade 1:N e chave estrangeira "usuario"
+	@JsonIgnoreProperties("usuario") // 
 	private List<Postagem> postagem;
 
 	public long getId() {
