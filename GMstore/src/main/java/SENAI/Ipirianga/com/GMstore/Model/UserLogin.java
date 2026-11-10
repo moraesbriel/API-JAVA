@@ -12,20 +12,26 @@ public class UserLogin {
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
-	private long cpf;
-	private String email, senha, usuarios;
+	private long id;
+	private String nome, usuarios, senha, token, foto, tipo;
 	
-	public long getCpf() {
-		return cpf;
+	public long getId() {
+		return id;
 	}
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
+	public void setId(long id) {
+		this.id = id;
 	}
-	public String getEmail() {
-		return email;
+	public String getNome() {
+		return nome;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(String usuarios) {
+		this.usuarios = usuarios;
 	}
 	public String getSenha() {
 		return senha;
@@ -33,10 +39,22 @@ public class UserLogin {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getUsuarios() {
-		return usuarios;
+	public String getToken() {
+		return token;
 	}
-	public void setUsuarios(String usuarios) {
-		this.usuarios = usuarios;
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

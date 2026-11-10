@@ -2,6 +2,8 @@ package SENAI.Ipirianga.com.GMstore.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -11,7 +13,8 @@ import jakarta.persistence.Table;
 public class Veiculo {
 	
 	@Id
-	private long chassi;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
 	private double preco;
 	private int quantidade, ano;
 	private String modelo, marca, cor, descricao;
@@ -24,12 +27,12 @@ public class Veiculo {
 	@JsonIgnoreProperties("veiculo")
 	private Frabricante fabricante;
 
-	public long getChassi() {
-		return chassi;
+	public long getId() {
+		return id;
 	}
 
-	public void setChassi(long chassi) {
-		this.chassi = chassi;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public double getPreco() {
