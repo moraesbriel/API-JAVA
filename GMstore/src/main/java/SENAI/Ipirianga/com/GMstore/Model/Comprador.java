@@ -62,11 +62,11 @@ public class Comprador {
 		this.senha = senha;
 	}
 
-	public List<Veiculos> getVeiculo() {
+	public List<Veiculo> getVeiculo() {
 		return veiculo;
 	}
 
-	public void setVeiculo(List<Veiculos> veiculo) {
+	public void setVeiculo(List<Veiculo> veiculo) {
 		this.veiculo = veiculo;
 	}
 }	

@@ -1,7 +1,6 @@
 package SENAI.Ipirianga.com.GMstore.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -13,7 +12,9 @@ public class Veiculo {
 	
 	@Id
 	private long chassi;
-	private String modelo, marca, cor;
+	private double preco;
+	private int quantidade, ano;
+	private String modelo, marca, cor, descricao;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("veiculo")
@@ -21,7 +22,7 @@ public class Veiculo {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("veiculo")
-	private Estoque estoque;
+	private Frabricante fabricante;
 
 	public long getChassi() {
 		return chassi;
@@ -29,6 +30,30 @@ public class Veiculo {
 
 	public void setChassi(long chassi) {
 		this.chassi = chassi;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public int getAno() {
+		return ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 
 	public String getModelo() {
@@ -55,6 +80,14 @@ public class Veiculo {
 		this.cor = cor;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public Comprador getComprador() {
 		return comprador;
 	}
@@ -63,11 +96,11 @@ public class Veiculo {
 		this.comprador = comprador;
 	}
 
-	public Estoque getEstoque() {
-		return estoque;
+	public Frabricante getFabricante() {
+		return fabricante;
 	}
 
-	public void setEstoque(Estoque estoque) {
-		this.estoque = estoque;
+	public void setFabricante(Frabricante fabricante) {
+		this.fabricante = fabricante;
 	}
 }

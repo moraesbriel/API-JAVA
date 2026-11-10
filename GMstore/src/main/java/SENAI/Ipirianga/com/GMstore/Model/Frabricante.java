@@ -1,48 +1,42 @@
 package SENAI.Ipirianga.com.GMstore.Model;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="estoque")
-public class Estoque {
+@Table(name="fabricante")
+public class Frabricante {
 	
 	@Id
-	private String modelo, cor, ano;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	private String nome;
 	
-	@OneToMany(mappedBy="estoque", cascade=CascadeType.ALL)
-	@JsonIgnoreProperties("estoque")
+	@OneToMany(mappedBy="fabricante", cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("fabricante")
 	private List<Veiculo> veiculo;
 
-	public String getModelo() {
-		return modelo;
+	public long getId() {
+		return id;
 	}
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getCor() {
-		return cor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
-	public String getAno() {
-		return ano;
-	}
-
-	public void setAno(String ano) {
-		this.ano = ano;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public List<Veiculo> getVeiculo() {
