@@ -25,7 +25,7 @@ public class Veiculo {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("veiculo")
-	private Frabricante fabricante;
+	private Fabricante fabricante;
 
 	public long getId() {
 		return id;
@@ -99,11 +99,11 @@ public class Veiculo {
 		this.comprador = comprador;
 	}
 
-	public Frabricante getFabricante() {
+	public Fabricante getFabricante() {
 		return fabricante;
 	}
 
-	public void setFabricante(Frabricante fabricante) {
+	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
 	}
 }
