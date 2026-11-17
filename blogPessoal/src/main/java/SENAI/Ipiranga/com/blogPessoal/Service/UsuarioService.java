@@ -10,7 +10,6 @@ import SENAI.Ipiranga.com.blogPessoal.Model.Usuario;
 import SENAI.Ipiranga.com.blogPessoal.Model.UserLogin;
 import SENAI.Ipiranga.com.blogPessoal.Repository.UsuarioRepository;
 
-
 @Service
 public class UsuarioService {
 	
@@ -23,52 +22,51 @@ public class UsuarioService {
 	
 	public Usuario cadastrarUsuario(Usuario usuario) {
 		
-		if (usuario==null)
-		{
+		if (usuario == null) {
 			throw new IllegalArgumentException("Os dados não foram informados");
 		}
 		
-		if(usuario.getSenha() ==null || usuario.getSenha().isBlank()) {
+		if (usuario.getSenha() == null || usuario.getSenha().isBlank()) {
 			throw new IllegalArgumentException("A senha deve ser informada");
 		}
+		
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
 		return repository.save(usuario);
-	
 	}
 	
-	public Optional<UserLogin> Logar(Optional<UserLogin> user){
+	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
 		
-		if(user==null || user.isEmpty() ) {
+		if (user == null || user.isEmpty()) {
 			return Optional.empty();
 		}
-		UserLogin usuarioLogin = user.get();
-		if(usuarioLogin.getUsuarios()==null||
-				usuarioLogin.getUsuarios().isBlank()||
-				usuarioLogin.getSenha()==null||
-				usuarioLogin.getSenha().isBlank()) {
+		
+		UserLogin userLogin = user.get();
+		if (userLogin.getUsuarios() == null ||
+			userLogin.getUsuarios().isBlank() ||
+			userLogin.getSenha() == null ||
+			userLogin.getSenha().isBlank()) {
 			return Optional.empty();
 		}
-		Optional<Usuario> usuarioEncontrado = repository.findByUsuario(usuarioLogin.getUsuarios());
-		if(usuarioEncontrado.isEmpty()) {
+		
+		Optional<Usuario> usuarioEncontrado = repository.findByUsuario(userLogin.getUsuarios());
+		if (usuarioEncontrado.isEmpty()) {
 			return Optional.empty();
-			
 		}
+		
 		Usuario usuarioBanco = usuarioEncontrado.get();
-		if(!encoder.matches(usuarioLogin.getSenha(), usuarioBanco.getSenha())) {
+		if (!encoder.matches(userLogin.getSenha(), usuarioBanco.getSenha())) {
 			return Optional.empty();
 		}
-			String auth = usuarioLogin.getUsuarios()+":"+ usuarioLogin.getSenha();
-			String encodedAuth = Base64.getEncoder()
-					.encodeToString(auth.getBytes(StandardCharsets.UTF_8));
-			String authHeader = "Basic "+ encodedAuth;
-			usuarioLogin.setToken(authHeader);
-			usuarioLogin.setId(usuarioBanco.getId());
-			usuarioLogin.setNome(usuarioBanco.getNome());
-			usuarioLogin.setFoto(usuarioBanco.getFoto());
-			usuarioLogin.setTipo(usuarioBanco.getTipo());
 			
-			return Optional.of(usuarioLogin);
-			
-		}
+		String auth = userLogin.getUsuarios()+":"+ userLogin.getSenha();
+		String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
+		String authHeader = "Basic "+ encodedAuth;
+		userLogin.setToken(authHeader);
+		userLogin.setId(usuarioBanco.getId());
+		userLogin.setNome(usuarioBanco.getNome());
+		userLogin.setFoto(usuarioBanco.getFoto());
+		userLogin.setTipo(usuarioBanco.getTipo());
+		return Optional.of(userLogin);
 	}
+}
