@@ -1,11 +1,11 @@
-package SENAI.Ipirianga.com.GMstore.Repository;
+package SENAI.Ipiranga.com.GMstore.Repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import SENAI.Ipirianga.com.GMstore.Model.Veiculo;
+import SENAI.Ipiranga.com.GMstore.Model.Veiculo;
 
 @Repository
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {

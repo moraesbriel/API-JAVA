@@ -1,4 +1,4 @@
-package SENAI.Ipirianga.com.GMstore.Model;
+package SENAI.Ipiranga.com.GMstore.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

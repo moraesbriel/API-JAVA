@@ -1,4 +1,4 @@
-package SENAI.Ipirianga.com.GMstore.Model;
+package SENAI.Ipiranga.com.GMstore.Model;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

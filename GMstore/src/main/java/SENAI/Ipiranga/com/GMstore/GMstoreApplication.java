@@ -1,4 +1,4 @@
-package SENAI.Ipirianga.com.GMstore;
+package SENAI.Ipiranga.com.GMstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
