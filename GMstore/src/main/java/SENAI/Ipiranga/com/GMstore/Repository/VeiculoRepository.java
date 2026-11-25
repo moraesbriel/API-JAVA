@@ -15,5 +15,4 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
 	public List<Veiculo> findByCorContainingIgnoreCase(String cor);
 	public List<Veiculo> findByPreco(double preco);
 	public List<Veiculo> findByAno(int ano);
-	public List<Veiculo> findById(long id);
 }
